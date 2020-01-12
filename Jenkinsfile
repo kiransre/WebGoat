@@ -21,7 +21,7 @@ pipeline {
       }
       stage('Scans: Master') {
          when { branch 'master' }
-         step {
+         steps {
             parallel(
                SonarQube: {
                   sh "mvn sonar:sonar"
