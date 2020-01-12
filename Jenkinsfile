@@ -46,7 +46,7 @@ pipeline {
 
       stage('Nexus Repo') {
          steps {
-            sh "echo 'hello world'"
+            sh "echo 'HELLO WORLD'"
          }
       }
 
