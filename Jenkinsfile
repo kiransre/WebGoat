@@ -19,29 +19,43 @@ pipeline {
             // bat "mvn -Dmaven.test.failure.ignore=true clean package"
          }
       }
-      stage('SonarQube') {
+      stage('Scans: Master') {
+         when { branch 'master' }
+         steps {
+            parallel(
+               SonarQube: {
+                  sh "mvn sonar:sonar"
+                  echo "Getting the analysis results .. "
+                  sh "/usr/local/bin/python3 /Users/kiranmasani/parse_analysis.py --path $WORKSPACE/target/sonar/report-task.txt"
+               },
+               NexusLifeCycle: {
+                  sh "echo 'hello world'"
+               }
+            )
+         }
+      }
+
+      stage('Scans: Dev') {
+         when { not { branch 'master' } }
          steps {
             sh "mvn sonar:sonar"
             echo "Getting the analysis results .. "
             sh "/usr/local/bin/python3 /Users/kiranmasani/parse_analysis.py --path $WORKSPACE/target/sonar/report-task.txt"
          }
-         
-      }      
-      stage('Nexus LifeCycle') {
-         steps {
-            sh "echo 'hello world'"
-         }
       }
+
       stage('Nexus Repo') {
          steps {
             sh "echo 'hello world'"
          }
-      }      
+      }
+
       stage('Docker Build') {
          steps {
             sh "echo 'hello world'"
          }
       }
+
       stage('Deploy: DEV') {
          steps {
             sh "echo 'hello world'"
