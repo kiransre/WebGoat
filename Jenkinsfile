@@ -26,7 +26,7 @@ pipeline {
                SonarQube: {
                   sh "mvn sonar:sonar"
                   echo "Getting the analysis results .. "
-                  sh "/usr/local/bin/python3 /Users/kiranmasani/parse_analysis.py --path $WORKSPACE/target/sonar/report-task.txt"
+                  sh "/Users/kiran/anaconda3/bin/python3 /Users/kiran/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
                },
                NexusLifeCycle: {
                   sh "echo 'hello world'"
@@ -40,7 +40,7 @@ pipeline {
          steps {
             sh "mvn sonar:sonar"
             echo "Getting the analysis results .. "
-            sh "/usr/local/bin/python3 /Users/kiranmasani/parse_analysis.py --path $WORKSPACE/target/sonar/report-task.txt"
+            sh "/Users/kiran/anaconda3/bin/python3 /Users/kiran/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
          }
       }
 
