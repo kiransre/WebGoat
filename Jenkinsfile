@@ -53,7 +53,7 @@ pipeline {
       stage('Docker Build') {
          steps {
             sh "echo 'Running Docker build ..' "
-            sh "cd $WORKSPACE/webgoat-server && docker build -t webgoat-local ."
+            sh "cd $WORKSPACE/webgoat-server && /usr/local/bin/docker build -t webgoat-local ."
          }
       }
 
