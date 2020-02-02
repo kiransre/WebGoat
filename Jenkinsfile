@@ -59,7 +59,7 @@ pipeline {
 
       stage('Deploy: DEV') {
          steps {
-            sh "echo 'hello world'"
+            sh "echo 'Deploying Docker .. "
          }
       }      
 
