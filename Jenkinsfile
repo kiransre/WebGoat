@@ -40,7 +40,7 @@ pipeline {
          steps {
             sh "mvn sonar:sonar"
             echo "Getting the analysis results .. "
-            sh "/Users/kiran/anaconda3/bin/python3 /Users/kiran/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
+            sh "/usr/bin/python /opt/devops/scripts/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
          }
       }
 
