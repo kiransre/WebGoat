@@ -57,6 +57,14 @@ pipeline {
          }
       }
 
+      stage('Container Scan') {
+
+         steps {
+            sh "echo 'Running Container scan .. ' "
+            sh "cd $WORKSPACE && /opt/devops/tools/inline_scan-v0.6.0 scan -r webgoat-local:latest"
+         }
+      }
+
       stage('Deploy: DEV') {
          steps {
             sh "echo 'Deploying Docker ..' "
