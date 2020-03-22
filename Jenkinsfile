@@ -55,11 +55,9 @@ pipeline {
          steps {
             sh "echo 'Running Docker build ..' "
             script {
-                 SHORT_HASH = "default"
-                 DOCKER_RELEASE_TAG = "default"
+              SHORT_HASH = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+              DOCKER_RELEASE_TAG = "MYAPP-${SHORT_HASH}"
             }
-            SHORT_HASH = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-            DOCKER_RELEASE_TAG = "MYAPP-${SHORT_HASH}"
             echo "DOCKER_RELEASE_TAG:  $DOCKER_RELEASE_TAG"
             sh "cd $WORKSPACE/webgoat-flaskapp && /usr/bin/docker build -t kmasani/myapp:${DOCKER_RELEASE_TAG} ."
          }
