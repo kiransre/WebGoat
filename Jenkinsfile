@@ -1,3 +1,6 @@
+def SHORT_HASH = ""
+def DOCKER_RELEASE_TAG = ""
+
 pipeline {
    agent any
 
