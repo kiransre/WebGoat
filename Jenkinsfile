@@ -68,7 +68,7 @@ pipeline {
 
          steps {
             sh "echo 'Running Container scan .. ' "
-            // sh "cd $WORKSPACE && /opt/devops/tools/inline_scan-v0.6.0 scan -r kmasani/myapp:${DOCKER_RELEASE_TAG}"
+            sh "cd $WORKSPACE && /opt/devops/tools/inline_scan-v0.6.0 scan -r kmasani/myapp:${DOCKER_RELEASE_TAG}"
             // sh "/usr/bin/python /opt/devops/scripts/parse_anchore_analysis.py --outfile $WORKSPACE/anchore-reports/webgoat-local_latest-vuln.json"
 
             sh "echo 'Pushing Docker .. ' "

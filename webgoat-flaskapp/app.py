@@ -12,12 +12,12 @@ app = Flask(__name__)
 @app.route('/') 
 # ‘/’ URL is bound with hello_world() function. 
 def hello_world(): 
-    return 'Hello World [v0.6]'
+    return 'Hello World [v0.7]'
   
 # version route
 @app.route('/version')
 def app_version():
-    return 'v0.6'
+    return 'v0.7'
 
 # main driver function 
 if __name__ == '__main__': 
