@@ -25,9 +25,9 @@ pipeline {
          steps {
             parallel(
                SonarQube: {
-                  sh "mvn sonar:sonar"
+                  // sh "mvn sonar:sonar"
                   echo "Getting the analysis results .. "
-                  sh "/Users/kiran/anaconda3/bin/python3 /Users/kiran/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
+                  // sh "/Users/kiran/anaconda3/bin/python3 /Users/kiran/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
                },
                NexusLifeCycle: {
                   sh "echo 'hello world'"
