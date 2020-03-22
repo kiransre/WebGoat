@@ -39,9 +39,9 @@ pipeline {
       stage('Scans: Dev') {
          when { not { branch 'master' } }
          steps {
-            sh "mvn sonar:sonar"
+            // sh "mvn sonar:sonar"
             echo "Getting the analysis results .. "
-            sh "/usr/bin/python /opt/devops/scripts/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
+            // sh "/usr/bin/python /opt/devops/scripts/parse_sonar.py --path $WORKSPACE/target/sonar/report-task.txt"
          }
       }
 
