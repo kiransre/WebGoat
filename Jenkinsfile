@@ -14,7 +14,8 @@ pipeline {
 
             // Run Maven on a Unix agent.
             sh "cd $WORKSPACE/webgoat-server"
-            sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            //sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            sh "mvn -Dmaven.test.failure.ignore=true clean compile"
          
             // To run Maven on a Windows agent, use
             // bat "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -67,7 +68,7 @@ pipeline {
 
          steps {
             sh "echo 'Running Container scan .. ' "
-            sh "cd $WORKSPACE && /opt/devops/tools/inline_scan-v0.6.0 scan -r kmasani/myapp:${DOCKER_RELEASE_TAG}"
+            // sh "cd $WORKSPACE && /opt/devops/tools/inline_scan-v0.6.0 scan -r kmasani/myapp:${DOCKER_RELEASE_TAG}"
             // sh "/usr/bin/python /opt/devops/scripts/parse_anchore_analysis.py --outfile $WORKSPACE/anchore-reports/webgoat-local_latest-vuln.json"
 
             sh "echo 'Pushing Docker .. ' "
