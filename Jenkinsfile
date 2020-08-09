@@ -7,7 +7,7 @@ pipeline {
    }
 
    stages {
-      stage('Build') {
+      stage('BUILD') {
          steps {
             // Get some code from a GitHub repository
             git 'https://github.com/kiransre/WebGoat.git'
